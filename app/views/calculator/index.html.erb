@@ -1,0 +1,13 @@
+<h1>EVERFI Simple Formula Calculator</h1>
+<blockquote>Please enter a formula using integers and the following operators, +, -, +, /</blockquote>
+<%= form_tag({controller: "calculator", action: "index"}, method: "post") do %>
+  <%= label_tag(:formula, "Enter formula:") %>
+  <%= text_field_tag(:formula, '', size: 100) %>
+  <%= submit_tag("Calculate") %>
+<% end %>
+
+<p>
+<% if @result %>
+  <p><strong>Formula:</strong> <%= @formula %></p>
+  <p><strong>Result:</strong> <%= number_with_precision(@result, precision: 2, strip_insignificant_zeros: true) %></p>
+<% end %>
